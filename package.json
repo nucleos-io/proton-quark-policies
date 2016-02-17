@@ -1,11 +1,16 @@
 {
   "name": "proton-quark-policies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nucleos",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "proton-quark": "^1.0.0",
+    "require-all": "^2.0.0"
+  }
 }
