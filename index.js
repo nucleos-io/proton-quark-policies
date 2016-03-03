@@ -35,17 +35,16 @@ class PoliciesQuark extends Quark {
    * @author Luis Hernandez
    */
   initialize() {
-    _.forEach(this._policies, (Policie, fileName) => {
-      const policie = new Policie(this.proton)
-      policie.fileName = fileName
-      policie.expose(policie)
-      this.bindToApp(policie)
-      return policie
+    _.forEach(this._policies, (Policy, fileName) => {
+      const policy = new Policy(this.proton)
+      policy.fileName = fileName
+      policy.expose(policy)
+      this._addPolicyToApp(policy)
+      return policy
     })
   }
 
-  bindToApp(...args) {
-    const policy = args[0]
+  _addPolicyToApp(policy) {
     this.proton.app.policies[policy.name] = policy
   }
 
