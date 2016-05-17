@@ -38,7 +38,7 @@ class PoliciesQuark extends Quark {
     _.forEach(this._policies, (Policy, fileName) => {
       const policy = new Policy(this.proton)
       policy.fileName = fileName
-      policy.expose(policy)
+      //policy.expose(policy)
       this._addPolicyToApp(policy)
       return policy
     })
