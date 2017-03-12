@@ -65,6 +65,10 @@ class PoliciesQuark extends Quark {
     return require('require-all')(policiesPath)
   }
 
+  get name() {
+    return 'proton-quark-policies'
+  }
+
 }
 
 module.exports = PoliciesQuark
