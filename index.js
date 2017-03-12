@@ -23,8 +23,11 @@ class PoliciesQuark extends Quark {
    * @author Luis Hernandez
    */
   configure() {
-    if (!this.proton.app.policies)
-      this.proton.app.policies = {}
+    return new Promise(resolve => {
+      if (!this.proton.app.policies) this.proton.app.policies = {}
+      resolve()
+    })
+
   }
 
 
@@ -35,12 +38,14 @@ class PoliciesQuark extends Quark {
    * @author Luis Hernandez
    */
   initialize() {
-    _.forEach(this._policies, (Policy, fileName) => {
-      const policy = new Policy(this.proton)
-      policy.fileName = fileName
-      //policy.expose(policy)
-      this._addPolicyToApp(policy)
-      return policy
+    return new Promise(resolve => {
+      _.forEach(this._policies, (Policy, fileName) => {
+        const policy = new Policy(this.proton)
+        policy.fileName = fileName
+        this._addPolicyToApp(policy)
+        return policy
+      })
+      resolve()
     })
   }
 
@@ -56,7 +61,7 @@ class PoliciesQuark extends Quark {
    * @return {Array} - All policies exported values as an array
    */
   get _policies() {
-    const policiesPath = path.join(this.proton.app.path, '/policies')
+    const policiesPath = path.join(this.proton.app.path, '/api/policies')
     return require('require-all')(policiesPath)
   }
 

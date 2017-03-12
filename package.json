@@ -1,15 +1,20 @@
 {
   "name": "proton-quark-policies",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -R spec ./test/*.js",
+    "start": "node index.js"
   },
   "author": "Nucleos",
   "license": "ISC",
   "dependencies": {
+    "chai": "^3.5.0",
     "lodash": "^4.0.0",
+    "mocha": "^3.2.0",
+    "proton-koa": "^3.0.2",
+    "proton-policy": "^1.0.5",
     "proton-quark": "^1.0.0",
     "require-all": "^2.0.0"
   }
